@@ -9,6 +9,7 @@ services:
       - redis-data:/data
     restart: always
     command: ["redis-server", "--appendonly", "yes"]
+
   mongodb:
     image: mongodb/mongodb-community-server:6.0.11-ubi9
     container_name: mongodb-container
@@ -16,5 +17,19 @@ services:
       - "27017:27017"
     restart: always
 
+  mysql:
+    image: mysql:lts
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+
 volumes:
   redis-data:
+  mysql-data:
