@@ -1,0 +1,4 @@
+➜ dbs git:(master) npm --version
+10.7.0
+➜ dbs git:(master) node --version
+v18.20.4
